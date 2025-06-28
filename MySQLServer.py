@@ -2,12 +2,14 @@ import mysql.connector
 from mysql.connector import Error
 
 def create_database():
+    connection = None  # Declare in outer scope
+
     try:
-        # Connect to MySQL Server (default user: root, no password)
+        # Update this with your actual MySQL root password
         connection = mysql.connector.connect(
             host='localhost',
             user='root',
-            password=''  # Change if your root user has a password
+            password='Philani@_2001'  # <--- REPLACE THIS
         )
 
         if connection.is_connected():
@@ -19,7 +21,7 @@ def create_database():
         print(f"Error connecting to MySQL: {e}")
 
     finally:
-        if connection.is_connected():
+        if connection and connection.is_connected():
             cursor.close()
             connection.close()
             print("MySQL connection closed.")
